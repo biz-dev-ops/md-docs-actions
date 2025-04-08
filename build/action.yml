@@ -6,7 +6,7 @@ author: Arjan Geertsema
 
 inputs:
 
-  skip_branches: 
+  skip_branches:
     description: Branche or branches which are skipped.
     required: false
 
@@ -21,18 +21,18 @@ runs:
 
   steps:
     - name: Setup Graphviz
-      uses: ts-graphviz/setup-graphviz@v1
+      uses: ts-graphviz/setup-graphviz@v2
 
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16.x'
+        node-version: '22.x'
 
     - name: Install md-docs
       working-directory: ${{ inputs.working_directory }}
       shell: bash
       run: |
-        npm install @synion/md-docs -g
+        npm install @biz-dev-ops/md-docs -g
 
     - name: Build branches
       working-directory: ${{ inputs.working_directory }}
@@ -67,4 +67,4 @@ runs:
     - name: Uninstall md-docs
       if: always()
       shell: bash
-      run: npm uninstall @synion/md-docs -g
+      run: npm uninstall @biz-dev-ops/md-docs -g
